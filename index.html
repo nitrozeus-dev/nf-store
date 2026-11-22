@@ -292,7 +292,7 @@ const pixPrice=v=>v*(1-(+S.settings.pix||0)/100);
 function stockInfo(p){
   if(p.mode==='encomenda')return {cls:'order',txt:'Sob encomenda',pill:'ord'};
   if(p.stock<=0)return {cls:'out',txt:'Esgotado',pill:'out'};
-  if(p.stock<=2)return {cls:'low',txt:`Últimas ${p.stock} un.`,pill:'low'};
+  if(p.stock<=2)return {cls:'low',txt:p.stock===1?'Última unidade':`Últimas ${p.stock} un.`,pill:'low'};
   return {cls:'',txt:`${p.stock} em estoque`,pill:'ok'};
 }
 const canBuy=p=>p.mode==='encomenda'||p.stock>0;
