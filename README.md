@@ -1,8 +1,8 @@
 # NF Store: loja vitrine (demo)
 
 Arquivos:
-- `index.html`: a loja completa em um único arquivo. Abre direto no navegador.
-- `loja.html`: a mesma loja no formato usado pelo link de demonstração.
+- `index.html`: a loja (gerada a partir de `app.html` com `sh build.sh`).
+- `img/`: fotos dos produtos, tiradas dos posts do Instagram @nf.store_.
 
 ## Como mostrar rodando
 1. Link pronto: https://claude.ai/artifact/MxYkCCULfqPXrbaWGKgE7Q (é privado; para outra pessoa abrir, use Compartilhar na própria página).
