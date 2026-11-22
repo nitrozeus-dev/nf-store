@@ -4,7 +4,7 @@
 <meta name="description" content="NF Store: perfumes árabes, iPhones e importados originais no Rio de Janeiro. Entregamos para todo o Brasil.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: e-commerce premium — faixa de aviso, header branco fixo, hero escuro em carrossel (texto à esquerda, foto 4:5 à direita), faixa de confiança, categorias com foto, ranking dos árabes, catálogo em grade 2→4, sobre a loja, rodapé escuro */
 :root{
@@ -14,6 +14,7 @@
   --ok:#2e6b47; --warn:#9a5b12; --bad:#a3352b;
   --f-display:"Instrument Serif", "Iowan Old Style", Georgia, serif;
   --f-body:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
@@ -43,7 +44,11 @@ a{color:inherit}
 .notice .wrap{display:flex;justify-content:center;gap:28px;padding-block:8px;flex-wrap:wrap;text-align:center}
 .notice span:not(:first-child){display:none}
 @media (min-width:760px){.notice span:not(:first-child){display:inline}}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line);transition:background-color .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
+.top.over{background:transparent;border-color:transparent;color:#f3efe8;-webkit-backdrop-filter:none;backdrop-filter:none}
+.top.over .icobtn,.top.over .nav a{color:#f3efe8}
+.top.over .icobtn:hover{background:rgba(255,255,255,.1)}
+.top.over .nav a:hover{border-color:#f3efe8}
 .top .wrap{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
 .brand svg{width:40px;height:40px}
@@ -67,7 +72,7 @@ a{color:inherit}
 .sheet a:last-child{border:0}
 
 /* Hero */
-.hero{background:var(--noir);color:#f3efe8;position:relative;overflow:hidden}
+.hero{background:var(--noir);color:#f3efe8;position:relative;overflow:hidden;margin-top:-69px;padding-top:69px}
 .slides{display:grid}
 .slide{grid-area:1/1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:56px 72px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s .35s}
 .slide.on{opacity:1;visibility:visible;transition:opacity .5s var(--ease) .3s,visibility 0s}
@@ -78,11 +83,19 @@ a{color:inherit}
 .slide .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .slide figure{margin:0;justify-self:end;width:min(440px,100%);aspect-ratio:4/5;border-radius:6px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.8);max-width:100%}
 .slide figure img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.on figure img{animation:kb 9s var(--ease) both}
+@keyframes kb{from{transform:scale(1.07)}}
+.slide.on .kicker,.slide.on h1,.slide.on p,.slide.on .ctas{animation:up .7s var(--ease) both}
+.slide.on h1{animation-delay:.38s}.slide.on p{animation-delay:.46s}.slide.on .ctas{animation-delay:.54s}.slide.on .kicker{animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}}
 .hero-nav{position:absolute;left:0;right:0;bottom:22px}
 .hero-nav .wrap{display:flex;gap:16px;align-items:center}
 .dots{display:flex;gap:8px}
-.dots button{width:28px;height:3px;border:0;border-radius:2px;background:rgba(255,255,255,.25);padding:0}
-.dots button[aria-current="true"]{background:var(--gold)}
+.dots button{position:relative;width:44px;height:3px;border:0;border-radius:2px;background:rgba(255,255,255,.22);padding:0;overflow:hidden}
+.dots button::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left}
+.dots button[aria-current="true"]::after{transform:scaleX(1)}
+.hero.run .dots button[aria-current="true"]::after{animation:fill 7s linear both}
+@keyframes fill{from{transform:scaleX(0)}}
 .arrows{margin-left:auto;display:flex;gap:8px}
 .arrows button{width:40px;height:40px;border-radius:50%;border:1px solid var(--noir-line);background:transparent;color:#f3efe8;display:grid;place-items:center}
 .arrows button:hover{background:rgba(255,255,255,.08)}
@@ -103,6 +116,40 @@ a{color:inherit}
 .btn-ghost:hover{border-color:var(--fg)}
 .btn-sm{padding:8px 14px;font-size:13px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* Marcas em movimento */
+.ticker{background:var(--noir);color:#a89f93;border-top:1px solid var(--noir-line);overflow:hidden;white-space:nowrap}
+.ticker .row{display:inline-flex;gap:48px;padding:16px 0;animation:tick 40s linear infinite;font-family:var(--f-display);font-size:26px}
+.ticker:hover .row{animation-play-state:paused}
+.ticker .row span{display:inline-flex;align-items:center;gap:48px}
+.ticker .row span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+@keyframes tick{to{transform:translateX(-50%)}}
+.spec{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);letter-spacing:.01em}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.fly{position:fixed;z-index:95;border-radius:6px;object-fit:cover;pointer-events:none;box-shadow:0 20px 40px -10px rgba(0,0,0,.4)}
+.bump{animation:bump .45s var(--ease)}
+@keyframes bump{40%{transform:scale(1.25)}}
+/* Perfume em destaque */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--noir);color:#f3efe8;border-radius:8px;overflow:hidden;margin-top:72px}
+.feature figure{margin:0;min-height:100%;max-width:100%}
+.feature figure img{width:100%;height:100%;object-fit:cover;display:block}
+.feature .txt{padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.feature h2{font-family:var(--f-display);font-size:clamp(40px,5vw,64px);line-height:1}
+.feature p{color:#bdb5aa;margin:0;max-width:42ch}
+.pyramid{display:grid;gap:0;border-top:1px solid var(--noir-line)}
+.pyramid div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--noir-line)}
+.pyramid dt{font-family:var(--f-mono);font-size:12px;color:var(--gold);padding-top:2px}
+.pyramid dd{margin:0}
+@media (max-width:800px){.feature{grid-template-columns:1fr}.feature figure{aspect-ratio:4/5}}
+.handle{display:none}
+@media (max-width:600px){
+  .scrim.sheet-mode{align-items:flex-end}
+  .drawer{width:100%;height:90vh;height:90dvh;border-radius:16px 16px 0 0;animation:sheet .32s var(--ease);padding-right:0}
+  .handle{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:8px auto 0}
+  .pinfo .actions{position:sticky;bottom:0;background:var(--bg);margin-inline:-20px;padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);z-index:2}
+}
+@keyframes sheet{from{transform:translateY(40%);opacity:.4}}
 
 /* Faixa de confiança */
 .trust{border-bottom:1px solid var(--line);background:var(--surface)}
@@ -366,9 +413,21 @@ const $=s=>document.querySelector(s);
 const app=$('#app');
 let toastT;
 function toast(m){let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';t.setAttribute('role','status');document.body.appendChild(t);}t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,2400);}
+const reduceMotion=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+let io=null;
+function reveal(nodes){if(reduceMotion()||!('IntersectionObserver' in window))return;
+  if(!io)io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{rootMargin:'0px 0px -8% 0px'});
+  [...nodes].forEach((n,i)=>{const r=n.getBoundingClientRect();if(r.top<innerHeight)return;n.classList.add('rv');n.style.transitionDelay=(i%4)*70+'ms';io.observe(n);});}
+function flyTo(img,target){
+  target=target||$('#cBtn');if(!img||!target||reduceMotion()){target&&target.classList.remove('bump');return;}
+  const a=img.getBoundingClientRect(),b=target.getBoundingClientRect();const c=document.createElement('img');c.src=img.src;c.className='fly';
+  const w=Math.min(a.width,160),h=w*1.25;Object.assign(c.style,{left:a.left+(a.width-w)/2+'px',top:a.top+(a.height-h)/2+'px',width:w+'px',height:h+'px'});document.body.appendChild(c);
+  const dx=b.left+b.width/2-(a.left+a.width/2),dy=b.top+b.height/2-(a.top+a.height/2);
+  c.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${dx}px,${dy}px) scale(.12)`,opacity:.6}],{duration:650,easing:'cubic-bezier(.5,0,.2,1)'}).onfinish=()=>{c.remove();target.classList.remove('bump');void target.offsetWidth;target.classList.add('bump');};}
 const cartCount=()=>Object.values(S.cart).reduce((a,b)=>a+b,0);
 function refreshCounts(){document.querySelectorAll('.count').forEach(b=>{b.textContent=cartCount();b.dataset.n=cartCount();});}
 const waLink=t=>`https://wa.me/${(S.settings.whatsapp||'').replace(/\D/g,'')}?text=${encodeURIComponent(t)}`;
+const specOf=p=>{const ml=(p.name.match(/(\d+)\s?ml/i)||[])[1];return [ml?ml+' ml':'',p.longevity?'fixação '+p.longevity:'',p.variants.length?p.variants.length+(p.cat==='eletronicos'?' cores':' versões'):'',p.mode==='encomenda'?'encomenda':''].filter(Boolean).join(' · ');};
 const priceBlock=p=>`<div class="price"><span class="now num">${brl(p.price)}</span>${p.old>p.price?`<span class="old num">${brl(p.old)}</span>`:''}</div><div class="pix num">${brl(pixPrice(p.price))} no Pix</div>`;
 
 /* ---------- Loja ---------- */
@@ -405,6 +464,7 @@ function renderStore(){
     <div class="hero-nav"><div class="wrap"><div class="dots">${slides.map((s,i)=>`<button aria-label="Destaque ${i+1}" aria-current="${i===0}" data-s="${i}"></button>`).join('')}</div>
       <div class="arrows"><button id="prev" aria-label="Anterior">${ico('left')}</button><button id="next" aria-label="Próximo">${ico('right')}</button></div></div></div>
   </section>
+  <div class="ticker" aria-hidden="true"><div class="row">${[0,1].map(()=>['Lattafa','Armaf','Afnan','French Avenue','Rasasi','Rayhaan','Apple','Meta'].map(b=>`<span>${b}</span>`).join('')).join('')}</div></div>
   <section class="trust"><div class="wrap">
     <div>${ico('shield')}<span><b>Produtos originais</b><small>Lacrados e com procedência</small></span></div>
     <div>${ico('truck')}<span><b>Envio para todo o Brasil</b><small>Ou retire na loja no ${esc(st.city)}</small></span></div>
@@ -423,6 +483,10 @@ function renderStore(){
       <div class="sec-head"><div><h2 id="h-rank">Os árabes mais pedidos</h2><p>Perfumes inspirados nos grandes nichos, com a fixação que nossos clientes relatam.</p></div></div>
       <div class="rank">${ranked.map(p=>`<a class="rk" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy"></div><div class="b"><span class="pos num">${p.rank}º</span><span class="nm">${esc(p.name)}</span>${p.inspired?`<span class="meta">Inspirado em ${esc(p.inspired)}</span>`:''}<span class="meta">Fixação ${esc(p.longevity||'alta')}</span>${priceBlock(p)}</div></a>`).join('')}</div>
     </section>`:''}
+    ${(()=>{const f=byId('lattafa-eclaire');if(!f)return '';const L=f.desc.split('\n');const g=k=>{const t=(L.find(l=>l.startsWith(k))||'').replace(k,'').trim().replace(/\.$/,'');return t.charAt(0).toUpperCase()+t.slice(1);};if(!g('Topo:'))return '';
+      return `<section class="wrap" aria-labelledby="h-feat"><div class="feature rv"><figure><img src="${img0(f)}" alt="${esc(f.name)}" loading="lazy"></figure><div class="txt"><div class="kicker" style="color:var(--gold);font-size:14px">Perfume da semana</div><h2 id="h-feat">${esc(f.name.replace(/ EDP.*/,''))}</h2><p>${esc(L[0])}</p>
+        <dl class="pyramid"><div><dt>Topo</dt><dd>${esc(g('Topo:'))}</dd></div><div><dt>Coração</dt><dd>${esc(g('Coração:'))}</dd></div><div><dt>Base</dt><dd>${esc(g('Base:'))}</dd></div></dl>
+        <div class="ctas" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><a class="btn btn-light" href="#p-${f.id}">Ver o Eclaire</a><span class="num" style="font-size:18px">${brl(f.price)}</span></div></div></div></section>`;})()}
     <section class="sec wrap" id="catalogo" aria-labelledby="h-all">
       <div class="sec-head"><div><h2 id="h-all">Catálogo</h2></div></div>
       <div class="filters"><div style="display:flex;gap:8px;flex-wrap:wrap">${[{id:'todos',name:'Todos'},{id:'novos',name:'Lançamentos'},...S.cats].map(c=>`<button class="chip" data-cat="${c.id}" aria-pressed="${view.cat===c.id}">${esc(c.name)}</button>`).join('')}</div>
@@ -458,15 +522,19 @@ function renderStore(){
   app.querySelectorAll('a[href="#catalogo"]:not([data-go]),a[href="#ranking"],a[href="#sobre"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('#mSheet').hidden=true;const t=document.getElementById(a.getAttribute('href').slice(1));t&&t.scrollIntoView({behavior:'smooth'});}));
   app.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>setCat(b.dataset.cat)));
   // carrossel
-  let cur=0;const sl=[...app.querySelectorAll('.slide')],dots=[...app.querySelectorAll('.dots button')];
+  const hero=app.querySelector('.hero');let cur=0;const sl=[...app.querySelectorAll('.slide')],dots=[...app.querySelectorAll('.dots button')];
   const go=i=>{cur=(i+sl.length)%sl.length;sl.forEach((s,k)=>{s.classList.toggle('on',k===cur);s.setAttribute('aria-hidden',k!==cur);s.querySelectorAll('a').forEach(a=>k===cur?a.removeAttribute('tabindex'):a.setAttribute('tabindex','-1'));});dots.forEach((d,k)=>d.setAttribute('aria-current',k===cur));};
   dots.forEach(d=>d.onclick=()=>{go(+d.dataset.s);restart();});
   $('#prev').onclick=()=>{go(cur-1);restart();};$('#next').onclick=()=>{go(cur+1);restart();};
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function restart(){clearInterval(slideTimer);if(!reduce&&sl.length>1)slideTimer=setInterval(()=>go(cur+1),7000);}
-  const hero=app.querySelector('.hero');hero.addEventListener('mouseenter',()=>clearInterval(slideTimer));hero.addEventListener('mouseleave',restart);hero.addEventListener('focusin',()=>clearInterval(slideTimer));
+  function restart(){clearInterval(slideTimer);hero.classList.remove('run');if(!reduce&&sl.length>1){void hero.offsetWidth;hero.classList.add('run');slideTimer=setInterval(()=>{go(cur+1);hero.classList.remove('run');void hero.offsetWidth;hero.classList.add('run');},7000);}}
+  hero.addEventListener('mouseenter',()=>{clearInterval(slideTimer);hero.classList.remove('run');});hero.addEventListener('mouseleave',restart);hero.addEventListener('focusin',()=>{clearInterval(slideTimer);hero.classList.remove('run');});
   restart();
   renderGrid();
+  reveal(app.querySelectorAll('.tile,.rk,.feature'));
+  const top=app.querySelector('.top');const onScroll=()=>top.classList.toggle('over',!$('#overlay')&&hero.getBoundingClientRect().bottom>80&&$('#sBar').hidden&&$('#mSheet').hidden);
+  window.onscroll=onScroll;onScroll();
+  ['sBtn','mBtn'].forEach(id=>$('#'+id).addEventListener('click',onScroll));
 }
 function setCat(c){view.cat=c;app.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.cat===c));renderGrid();}
 function renderGrid(){
@@ -480,9 +548,10 @@ function renderGrid(){
     const badge=p.mode==='encomenda'?'<span class="badge dark">Sob encomenda</span>':p.stock<=0?'<span class="badge dark">Esgotado</span>':p.isNew?'<span class="badge">Lançamento</span>':p.stock<=2?`<span class="badge">${si.txt}</span>`:'';
     return `<a class="card ${canBuy(p)?'':'isout'}" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy">${badge}${off?`<span class="badge sale num">−${off}%</span>`:''}
       ${canBuy(p)&&!p.variants.length?`<button class="quick" data-quick="${p.id}" type="button">Adicionar à sacola</button>`:''}</div>
-      <div><div class="nm">${esc(p.name)}</div><div class="sub">${p.inspired?'Inspirado em '+esc(p.inspired):esc(catName(p.cat))}</div></div>${priceBlock(p)}</a>`;}).join('')
+      <div><div class="spec">${esc(specOf(p))}</div><div class="nm" style="margin-top:4px">${esc(p.name)}</div><div class="sub">${p.inspired?'Inspirado em '+esc(p.inspired):esc(catName(p.cat))}</div></div>${priceBlock(p)}</a>`;}).join('')
     :`<p class="empty">Nada encontrado para essa busca. Tente outro nome ou categoria.</p>`;
-  g.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();addToCart(b.dataset.quick,1,'');toast('Adicionado à sacola');refreshCounts();}));
+  g.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();addToCart(b.dataset.quick,1,'');flyTo(b.closest('.ph').querySelector('img'));toast('Adicionado à sacola');refreshCounts();}));
+  reveal(g.querySelectorAll('.card'));
 }
 
 /* Página do produto */
@@ -518,7 +587,7 @@ function openProduct(id){
     const t=e.target.closest('[data-i]');if(t){cur=+t.dataset.i;$('#mainImg').src=list[cur];el.querySelectorAll('.thumbs button').forEach((b,i)=>b.setAttribute('aria-current',i===cur));}
     const v=e.target.closest('[data-v]');if(v){variant=v.dataset.v;el.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',b===v));$('#vname').textContent=variant;}
     const q=e.target.closest('[data-q]');if(q){qty=Math.min(maxQ(p),Math.max(1,qty+ +q.dataset.q));$('#qv').textContent=qty;}
-    if(e.target.closest('[data-add]')){addToCart(p.id,qty,variant);toast('Adicionado à sacola');refreshCounts();}
+    if(e.target.closest('[data-add]')){addToCart(p.id,qty,variant);flyTo($('#mainImg'),el.querySelector('[data-cart]'));toast('Adicionado à sacola');refreshCounts();}
     if(e.target.closest('[data-buy]')){addToCart(p.id,qty,variant);afterClose=()=>openCart(true);location.hash='';}
     if(e.target.closest('[data-cart]')){afterClose=()=>openCart();location.hash='';}
   });
@@ -528,8 +597,8 @@ function cartLines(){return Object.entries(S.cart).map(([k,q])=>{const [id,v]=k.
 let ck={nome:'',entrega:'retirada',endereco:'',pagamento:'pix',obs:''};
 function openCart(goCheckout){
   closeOverlay();
-  const el=document.createElement('div');el.className='scrim';el.id='overlay';
-  el.innerHTML=`<aside class="drawer" role="dialog" aria-modal="true" aria-label="Sacola"><header><h2>Sua sacola</h2><button class="closebtn" data-close aria-label="Fechar">${ico('x')}</button></header><div class="body" id="cbody"></div><footer id="cfoot"></footer></aside>`;
+  const el=document.createElement('div');el.className='scrim sheet-mode';el.id='overlay';
+  el.innerHTML=`<aside class="drawer" role="dialog" aria-modal="true" aria-label="Sacola"><div class="handle"></div><header><h2>Sua sacola</h2><button class="closebtn" data-close aria-label="Fechar">${ico('x')}</button></header><div class="body" id="cbody"></div><footer id="cfoot"></footer></aside>`;
   document.body.appendChild(el);document.body.style.overflow='hidden';
   el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-close]'))closeOverlay();});
   let step=goCheckout===true?'checkout':'cart';
@@ -594,7 +663,7 @@ function closeOverlay(){const o=$('#overlay');if(o)o.remove();document.body.styl
 /* ---------- Painel ---------- */
 let authed=false,atab='produtos',editing=null,afilter='';
 function renderAdmin(){
-  closeOverlay();clearInterval(slideTimer);
+  closeOverlay();clearInterval(slideTimer);window.onscroll=null;
   if(!authed){
     app.innerHTML=`<form class="login" id="lg"><div style="display:flex;gap:12px;align-items:center">${logo(48)}<div><h1 class="serif" style="font-size:28px">Área da loja</h1><span class="note">Produtos, preços, estoque e pedidos</span></div></div>
       <div class="field"><label for="pin">Senha</label><input id="pin" type="password" inputmode="numeric" autocomplete="current-password"></div>
