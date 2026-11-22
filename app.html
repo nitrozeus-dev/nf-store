@@ -68,8 +68,8 @@ a{color:inherit}
 /* Hero */
 .hero{background:var(--noir);color:#f3efe8;position:relative;overflow:hidden}
 .slides{display:grid}
-.slide{grid-area:1/1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:56px 72px;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility .6s}
-.slide.on{opacity:1;visibility:visible}
+.slide{grid-area:1/1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:56px 72px;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s .35s}
+.slide.on{opacity:1;visibility:visible;transition:opacity .5s var(--ease) .3s,visibility 0s}
 .slide .kicker{font-size:14px;color:var(--gold)}
 .slide h1{font-family:var(--f-display);font-size:clamp(44px,6.4vw,84px);line-height:.98;margin:14px 0 18px}
 .slide h1 i{color:var(--gold)}
