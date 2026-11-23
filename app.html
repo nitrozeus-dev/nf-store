@@ -18,10 +18,10 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#121110; --surface:#1a1816; --fg:#f2eee8; --fg-2:#cfc8bf; --muted:#9a9289; --line:rgba(255,255,255,.1);
-  --gold-ink:#d2ad6c; --gold-soft:#2a2219; color-scheme:dark}}
+  --gold-ink:#d2ad6c; --gold-soft:#2a2219; --ok:#6fbf8e; --warn:#e0a45a; --bad:#e58278; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#121110; --surface:#1a1816; --fg:#f2eee8; --fg-2:#cfc8bf; --muted:#9a9289; --line:rgba(255,255,255,.1);
-  --gold-ink:#d2ad6c; --gold-soft:#2a2219; color-scheme:dark}
+  --gold-ink:#d2ad6c; --gold-soft:#2a2219; --ok:#6fbf8e; --warn:#e0a45a; --bad:#e58278; color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
@@ -250,7 +250,17 @@ a{color:inherit}
 @media (max-width:760px){.cats{grid-template-columns:1fr 1fr}.cats .tile:last-child{grid-column:1/-1;aspect-ratio:16/9}.tile b{font-size:24px}}
 
 /* Ranking */
-.rank{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:thin}
+.rank{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:16px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;overscroll-behavior-x:contain}
+.rank::-webkit-scrollbar{display:none}
+.rank.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.rank.drag a{pointer-events:none}
+.rank img{-webkit-user-drag:none;user-select:none}
+.rankwrap{position:relative}
+.rarrow{position:absolute;top:38%;translate:0 -50%;z-index:3;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);display:grid;place-items:center;box-shadow:0 10px 24px -10px rgba(0,0,0,.35);transition:opacity .2s var(--ease),background-color .15s var(--ease),border-color .15s var(--ease)}
+.rarrow:hover{border-color:var(--fg)}
+.rarrow.prev{left:-24px}.rarrow.next{right:-24px}
+.rarrow:disabled{opacity:0;pointer-events:none}
+@media (max-width:1320px){.rarrow.prev{left:8px}.rarrow.next{right:8px}}
 .rk{scroll-snap-align:start;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:border-color .15s var(--ease)}
 .rk:hover{border-color:var(--fg)}
 .rk .ph{aspect-ratio:4/5;background:var(--noir);max-width:100%}
@@ -549,7 +559,7 @@ function renderStore(){
   <main>
     ${ranked.length?`<section class="sec wrap" id="ranking" aria-labelledby="h-rank">
       <div class="sec-head"><div><div class="eyebrow">Ranking da loja</div><h2 id="h-rank">Os árabes mais pedidos</h2><p>Perfumes inspirados nos grandes nichos, com a fixação que nossos clientes relatam.</p></div></div>
-      <div class="rank">${ranked.map(p=>`<a class="rk" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy"></div><div class="b"><span class="pos num">${p.rank}º</span><span class="nm">${esc(p.name)}</span>${p.inspired?`<span class="meta">Inspirado em ${esc(p.inspired)}</span>`:''}<span class="meta">Fixação ${esc(p.longevity||'alta')}</span>${priceBlock(p)}</div></a>`).join('')}</div>
+      <div class="rankwrap rv-w"><button class="rarrow prev" id="rPrev" type="button" aria-label="Produtos anteriores" disabled>${ico('left')}</button><div class="rank" id="rank">${ranked.map(p=>`<a class="rk" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy"></div><div class="b"><span class="pos num">${p.rank}º</span><span class="nm">${esc(p.name)}</span>${p.inspired?`<span class="meta">Inspirado em ${esc(p.inspired)}</span>`:''}<span class="meta">Fixação ${esc(p.longevity||'alta')}</span>${priceBlock(p)}</div></a>`).join('')}</div><button class="rarrow next" id="rNext" type="button" aria-label="Próximos produtos">${ico('right')}</button></div>
     </section>`:''}
     ${(()=>{const f=byId('lattafa-eclaire');if(!f)return '';const L=f.desc.split('\n');const g=k=>{const t=(L.find(l=>l.startsWith(k))||'').replace(k,'').trim().replace(/\.$/,'');return t.charAt(0).toUpperCase()+t.slice(1);};if(!g('Topo:'))return '';
       return `<section class="wrap" aria-labelledby="h-feat"><div class="feature rv"><figure><img src="${img0(f)}" alt="${esc(f.name)}" loading="lazy"></figure><div class="txt"><div class="kicker" style="color:var(--gold);font-size:14px">Perfume da semana</div><h2 id="h-feat">${esc(f.name.replace(/ EDP.*/,''))}</h2><p>${esc(L[0])}</p>
@@ -621,7 +631,19 @@ function renderStore(){
   const hero=app.querySelector('.hero');clearInterval(slideTimer);
   if(!reduceMotion()&&matchMedia('(pointer:fine)').matches){const art=hero.querySelector('.lp-art');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();art.style.setProperty('--mx',((e.clientX-r.left)/r.width-.5).toFixed(3));art.style.setProperty('--my',((e.clientY-r.top)/r.height-.5).toFixed(3));});}
   renderGrid();
-  reveal(app.querySelectorAll('.rk,.feature,.iph>*,.step,.faq details,.about>*,.final .wrap>*'));
+  const rank=$('#rank');if(rank){
+    const step=()=>{const c=rank.querySelector('.rk');return c?(c.getBoundingClientRect().width+16)*(innerWidth<760?1:2):300;};
+    const upd=()=>{$('#rPrev').disabled=rank.scrollLeft<4;$('#rNext').disabled=rank.scrollLeft+rank.clientWidth>rank.scrollWidth-4;};
+    $('#rPrev').onclick=()=>rank.scrollBy({left:-step(),behavior:'smooth'});$('#rNext').onclick=()=>rank.scrollBy({left:step(),behavior:'smooth'});
+    rank.addEventListener('scroll',upd,{passive:true});upd();
+    let down=false,moved=false,sx=0,sl=0;
+    rank.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;down=true;moved=false;sx=e.clientX;sl=rank.scrollLeft;});
+    window.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-sx;if(!moved&&Math.abs(dx)>5){moved=true;rank.classList.add('drag');}if(moved)rank.scrollLeft=sl-dx;});
+    window.addEventListener('pointerup',()=>{if(!down)return;down=false;if(moved)setTimeout(()=>rank.classList.remove('drag'),0);});
+    rank.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;}},true);
+    rank.addEventListener('dragstart',e=>e.preventDefault());
+  }
+  reveal(app.querySelectorAll('.rankwrap,.feature,.iph>*,.step,.faq details,.about>*,.final .wrap>*'));
   const top=app.querySelector('.top');const onScroll=()=>top.classList.toggle('over',!$('#overlay')&&scrollY<12&&$('#sBar').hidden&&$('#mSheet').hidden);
   window.onscroll=onScroll;onScroll();
   ['sBtn','mBtn'].forEach(id=>$('#'+id).addEventListener('click',onScroll));
