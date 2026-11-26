@@ -3,7 +3,7 @@
 <meta name="description" content="NF Store: perfumes árabes, iPhones e importados originais no Rio de Janeiro. Entregamos para todo o Brasil.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Archivo:wdth,wght@62..125,700;62..125,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: landing page — hero escuro com manifesto à esquerda e colagem de 3 fotos sobre anéis dourados à direita; depois ranking, perfume da semana, faixa iPhone, catálogo, como comprar, dúvidas, a loja, chamada final. (antes: carrossel, faixa de confiança, categorias com foto, ranking dos árabes, catálogo em grade 2→4, sobre a loja, rodapé escuro */
 :root{
@@ -417,6 +417,157 @@ td img{width:40px;height:50px;border-radius:4px;object-fit:cover;background:var(
 .check{display:flex;gap:8px;align-items:center;font-size:14px}
 .login{max-width:380px;margin:12vh auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;display:grid;gap:16px}
 .confirm{display:inline-flex;gap:6px;align-items:center;font-size:13px}
+/* ---------- Abas (Início · Perfumes árabes · Tecnologia) ---------- */
+.nav a.tab[aria-current="page"]{color:var(--fg);border-color:var(--gold)}
+.top.over .nav a.tab[aria-current="page"]{border-color:var(--gold);color:#f3efe8}
+.tabstrip{display:none;border-top:1px solid var(--line)}
+.tabstrip .wrap{display:flex;gap:22px;height:44px;align-items:stretch;overflow-x:auto;scrollbar-width:none}
+.tabstrip .wrap::-webkit-scrollbar{display:none}
+.tabstrip a{display:flex;align-items:center;white-space:nowrap;text-decoration:none;font-size:14.5px;color:var(--fg-2);border-bottom:2px solid transparent}
+.tabstrip a[aria-current="page"]{color:var(--fg);border-color:var(--gold);font-weight:500}
+.top.over .tabstrip{border-color:rgba(255,255,255,.12)}
+.top.over .tabstrip a{color:rgba(243,239,232,.72)}
+.top.over .tabstrip a[aria-current="page"]{color:#f3efe8}
+@media (max-width:860px){.tabstrip{display:block}.hero,.ar-hero{margin-top:-113px!important;padding-top:113px!important}}
+
+/* Escolha de mundo na página inicial */
+.worlds{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-block:40px 8px}
+.world{position:relative;border-radius:22px;overflow:hidden;min-height:220px;display:grid;grid-template-columns:1fr 38%;text-decoration:none;isolation:isolate}
+.world .t{padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;min-width:0}
+.world img{width:100%;height:100%;object-fit:cover}
+.world.ar{background:#0c2f29;color:#f4ecdf}
+.world.ar h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-size:clamp(30px,3.4vw,42px);line-height:1}
+.world.ar small{color:#e2c88e;letter-spacing:.18em;text-transform:uppercase;font-size:11.5px}
+.world.ar img{border-radius:999px 999px 0 0;border:1px solid #c9a45c;border-bottom:0;margin-top:22px;height:calc(100% - 22px)}
+.world.tc{background:#ffd43b;color:#121212;border:2px solid #121212}
+.world.tc h3{font-family:"Archivo","Arial Narrow",Impact,sans-serif;font-weight:900;font-stretch:72%;text-transform:uppercase;font-size:clamp(32px,3.8vw,48px);line-height:.92}
+.world.tc small{font-weight:600;font-size:12.5px}
+.world.tc img{border-left:2px solid #121212}
+.world .go{font-size:14px;font-weight:600;display:inline-flex;gap:6px;align-items:center}
+@media (max-width:760px){.worlds{grid-template-columns:1fr}.world{min-height:180px}}
+
+/* ---------- Aba Perfumes árabes (tema árabe) ---------- */
+.v-ar{--em:#0c2f29;--em-2:#123d35;--brass:#c9a45c;--brass-2:#e2c88e;--ivory:#f4ecdf;--ivory-2:#e2d8c6;--mute:#a9b9b2;--aline:rgba(226,200,142,.22);--f-ar:"Cormorant Garamond",Georgia,"Times New Roman",serif;background:var(--em);color:var(--ivory)}
+.v-ar .pattern{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='%23c9a45c' stroke-opacity='.11'%3E%3Cpath d='M28 6l6 16 16 6-16 6-6 16-6-16-16-6 16-6z'/%3E%3Crect x='18' y='18' width='20' height='20' transform='rotate(45 28 28)'/%3E%3C/g%3E%3C/svg%3E")}
+.v-ar .lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+.v-ar h1,.v-ar h2,.v-ar h3{font-family:var(--f-ar);font-weight:500}
+.ar-hero{margin-top:-69px;padding-top:69px;position:relative}
+.ar-hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:48px 64px}
+.ar-hero h1{font-size:clamp(46px,6.6vw,88px);line-height:.98;margin:16px 0 20px}
+.ar-hero h1 em{color:var(--brass-2)}
+.ar-hero p{max-width:46ch;color:var(--ivory-2);font-size:17px;margin:0 0 26px}
+.ar-pick{display:flex;gap:10px;flex-wrap:wrap}
+.ar-pick button{background:transparent;color:var(--ivory);border:1px solid var(--brass);border-radius:999px;padding:13px 24px;font-size:15px;font-weight:500;transition:background-color .2s,color .2s}
+.ar-pick button:hover{background:rgba(201,164,92,.14)}
+.ar-pick button.solid{background:var(--brass);color:var(--em)}
+.ar-pick button.solid:hover{background:var(--brass-2)}
+.ar-arch{position:relative;justify-self:center;width:min(400px,100%);text-decoration:none;color:inherit}
+.ar-arch .frame{border-radius:999px 999px 18px 18px;overflow:hidden;border:1px solid var(--brass);padding:10px;background:var(--em-2)}
+.ar-arch img{border-radius:999px 999px 10px 10px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.ar-arch .seal{position:absolute;left:-20px;bottom:44px;background:var(--ivory);color:#1d1a15;border-radius:16px;padding:13px 17px;box-shadow:0 18px 40px rgba(0,0,0,.35);max-width:80%}
+.ar-arch .seal small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7a6a4a}
+.ar-arch .seal b{font-family:var(--f-ar);font-size:25px;font-weight:600;display:block;line-height:1.1}
+@media (max-width:860px){.ar-hero .wrap{grid-template-columns:1fr;gap:28px}.ar-arch{order:-1;width:min(320px,86%)}.ar-arch .seal{left:-6px}}
+.ar-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 69px);z-index:30;background:rgba(18,61,53,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-block:1px solid var(--aline)}
+@media (max-width:860px){.ar-bar{top:calc(env(safe-area-inset-top,0px) + 113px)}}
+.ar-bar .wrap{display:flex;flex-direction:column;gap:12px;padding-block:14px}
+.ar-seg{display:flex;gap:4px;background:rgba(0,0,0,.22);border-radius:999px;padding:4px;align-self:flex-start;max-width:100%;overflow-x:auto}
+.ar-seg button{border:0;background:none;color:var(--ivory-2);padding:9px 18px;border-radius:999px;font-size:14.5px;white-space:nowrap}
+.ar-seg button[aria-pressed="true"]{background:var(--brass);color:var(--em);font-weight:600}
+.ar-fam{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.ar-fam::-webkit-scrollbar{display:none}
+.ar-fam button{flex:0 0 auto;border:1px solid var(--aline);background:none;color:var(--ivory-2);border-radius:999px;padding:7px 14px;font-size:13.5px}
+.ar-fam button[aria-pressed="true"]{border-color:var(--brass-2);color:var(--ivory);background:rgba(201,164,92,.14)}
+.ar-list{padding-block:36px 72px}
+.ar-count{font-size:13.5px;color:var(--mute);margin:0 0 22px}
+.ar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 20px}
+@media (max-width:980px){.ar-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 14px}}
+.ar-card{display:flex;flex-direction:column;gap:5px;text-decoration:none;color:inherit;min-width:0}
+.ar-card .ph{position:relative;border-radius:999px 999px 12px 12px;overflow:hidden;background:var(--em-2);aspect-ratio:4/5;margin-bottom:9px}
+.ar-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.ar-card:hover .ph img{transform:scale(1.05)}
+.ar-card .tag{position:absolute;top:17%;left:50%;transform:translateX(-50%);background:var(--ivory);color:#1d1a15;font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;white-space:nowrap}
+.ar-card .tag.dk{background:#1d1a15;color:var(--ivory)}
+.ar-card .qa{position:absolute;left:10px;right:10px;bottom:10px;border:0;border-radius:999px;background:var(--brass);color:var(--em);padding:10px;font-weight:600;font-size:13.5px;opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s}
+.ar-card:hover .qa,.ar-card .qa:focus-visible{opacity:1;transform:none}
+@media (hover:none){.ar-card .qa{display:none}}
+.ar-card .br{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);display:flex;gap:8px;flex-wrap:wrap}
+.ar-card .br span{color:var(--mute)}
+.ar-card h3{font-size:22px;line-height:1.12}
+.ar-card .ins{font-size:13px;color:var(--mute)}
+.ar-card .fx{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ivory-2)}
+.ar-card .fx i{display:inline-block;width:48px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--brass) var(--w),rgba(255,255,255,.14) var(--w))}
+.ar-card .pr{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:4px;font-variant-numeric:tabular-nums}
+.ar-card .pr b{font-size:17px;font-weight:600}
+.ar-card .pr s{font-size:13px;color:var(--mute)}
+.ar-card .pr span{font-size:12.5px;color:var(--brass-2)}
+.ar-empty{color:var(--ivory-2);grid-column:1/-1}
+.ar-help{border-top:1px solid var(--aline)}
+.ar-help .wrap{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding-block:56px}
+.ar-help h2{font-size:clamp(32px,4.4vw,52px);line-height:1.04;margin-top:10px}
+.ar-help p{color:var(--ivory-2);max-width:52ch;margin:12px 0 0}
+.ar-help .btn{background:var(--brass);color:var(--em)}
+@media (max-width:760px){.ar-help .wrap{grid-template-columns:1fr}}
+
+/* ---------- Aba Tecnologia (estilo Hype) ---------- */
+.v-tech{--paper:#ffffff;--ink:#121212;--ink-2:#4b4b4b;--sun:#ffd43b;--hot:#ff3d2e;--soft:#f3f1ec;--f-h:"Archivo","Arial Narrow",Impact,sans-serif;background:var(--paper);color:var(--ink);color-scheme:light}
+.v-tech h1,.v-tech h2,.v-tech h3{font-family:var(--f-h);font-weight:900;font-stretch:72%;text-transform:uppercase;line-height:.92;letter-spacing:-.01em;margin:0}
+.tc-tick{background:var(--ink);color:var(--sun);overflow:hidden;white-space:nowrap;font-family:var(--f-h);font-weight:700;font-stretch:80%;text-transform:uppercase;font-size:13px;letter-spacing:.06em}
+.tc-tick div{display:inline-block;padding-block:8px;animation:tcrun 30s linear infinite}
+.tc-tick span{margin-inline:18px}
+.tc-tick span::before{content:"✦";margin-right:18px;color:var(--hot)}
+@keyframes tcrun{to{transform:translateX(-50%)}}
+.tc-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;padding-block:22px 36px}
+.tc-big{background:var(--sun);border:2px solid var(--ink);border-radius:28px;padding:clamp(22px,4vw,44px);display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:24px;align-items:end;overflow:hidden;min-width:0;color:var(--ink);text-decoration:none}
+.tc-big h1{font-size:clamp(44px,6.2vw,84px);overflow-wrap:anywhere}
+.tc-big h1 em{font-style:normal;color:var(--hot)}
+.tc-big p{font-size:17px;max-width:38ch;margin:16px 0 20px;color:#2a2410}
+.tc-big .pr{font-family:var(--f-h);font-weight:900;font-stretch:75%;font-size:30px}
+.tc-big .pr small{display:block;font-family:var(--f-b,inherit);font-weight:500;font-size:13px;font-stretch:100%;color:#3d3520}
+.tc-shot{position:relative}
+.tc-shot img{border-radius:20px;border:2px solid var(--ink);aspect-ratio:4/5;object-fit:cover;width:100%;transform:rotate(3deg)}
+.tc-stk{position:absolute;top:-14px;left:-22px;background:var(--hot);color:#fff;font-family:var(--f-h);font-weight:900;font-stretch:70%;text-transform:uppercase;border-radius:50%;width:88px;height:88px;display:grid;place-items:center;text-align:center;line-height:.95;font-size:16px;transform:rotate(-12deg);border:2px solid var(--ink);z-index:1}
+.tc-side{display:grid;grid-template-rows:1fr 1fr;gap:16px;min-width:0}
+.tc-tile{border:2px solid var(--ink);border-radius:28px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;overflow:hidden;position:relative;min-width:0;text-decoration:none}
+.tc-tile.dark{background:var(--ink);color:#fff}
+.tc-tile.dark img{position:absolute;right:-8px;bottom:-14px;width:42%;border-radius:16px;transform:rotate(-5deg);border:2px solid #fff}
+.tc-tile h2{font-size:clamp(28px,3.2vw,42px);max-width:58%}
+.tc-tile small{font-size:13px;opacity:.8;max-width:58%}
+.tc-tile.hot{background:var(--hot);color:#fff}
+.tc-tile.hot b{font-family:var(--f-h);font-weight:900;font-stretch:62%;font-size:clamp(60px,7.4vw,96px);line-height:.85}
+@media (max-width:900px){.tc-hero{grid-template-columns:1fr}.tc-big{grid-template-columns:1fr}.tc-shot{width:min(230px,66%);justify-self:end}}
+.tc-sec{padding-block:24px 40px}
+.tc-head{display:flex;align-items:end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.tc-head h2{font-size:clamp(36px,5vw,62px)}
+.tc-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:20px}
+.tc-chips::-webkit-scrollbar{display:none}
+.tc-chips button{flex:0 0 auto;border:2px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:600;font-size:14px;background:var(--paper);color:var(--ink)}
+.tc-chips button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.tc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:980px){.tc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+.tc-card{border:2px solid var(--ink);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);text-decoration:none;transition:transform .15s,box-shadow .15s;min-width:0}
+.tc-card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+.tc-card .ph{position:relative;aspect-ratio:1;background:var(--soft);border-bottom:2px solid var(--ink)}
+.tc-card .ph img{width:100%;height:100%;object-fit:cover}
+.tc-card .tg{position:absolute;top:10px;left:10px;background:var(--sun);border:2px solid var(--ink);border-radius:10px;padding:3px 8px;font-family:var(--f-h);font-weight:900;font-stretch:70%;font-size:15px;text-transform:uppercase}
+.tc-card .tg.hot{background:var(--hot);color:#fff}
+.tc-card .b{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tc-card h3{font-size:22px;font-stretch:68%}
+.tc-card .st{font-size:12.5px;color:var(--ink-2);background:var(--soft);border-radius:8px;padding:5px 8px;align-self:flex-start}
+.tc-card .pr{margin-top:auto;display:flex;align-items:end;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.tc-card .pr b{font-family:var(--f-h);font-weight:900;font-stretch:75%;font-size:25px;line-height:1;font-variant-numeric:tabular-nums}
+.tc-card .pr small{display:block;font-size:12px;color:var(--ink-2);margin-top:3px}
+.tc-card .add{width:42px;height:42px;border-radius:12px;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:24px;line-height:1;border:0;flex:0 0 auto}
+.tc-empty{grid-column:1/-1;color:var(--ink-2)}
+.tc-viral{background:var(--ink);color:#fff;border-radius:28px;padding:clamp(22px,4vw,44px);display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;margin-bottom:56px}
+.tc-viral h2{font-size:clamp(34px,5.2vw,66px)}
+.tc-viral h2 span{color:var(--sun)}
+.tc-viral p{color:#cfcfcf;max-width:52ch;margin:14px 0 0}
+.tc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 22px;border-radius:14px;font-family:var(--f-h);font-weight:700;font-stretch:90%;text-transform:uppercase;font-size:15px;border:2px solid var(--ink);background:var(--sun);color:var(--ink);box-shadow:4px 4px 0 #fff;text-decoration:none}
+.tc-btn.dk{background:var(--ink);color:#fff;box-shadow:none}
+.tc-big .tc-btn{box-shadow:4px 4px 0 var(--ink)}
+@media (max-width:760px){.tc-viral{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tc-tick div{animation:none}}
 </style>
 
 <div id="app"></div>
@@ -451,7 +602,7 @@ const logo=(s=40)=>`<svg viewBox="0 0 100 100" width="${s}" height="${s}" aria-h
    Preços com origem "post" vieram do carrossel "6 perfumes árabes" (16/09/2026).
    Os demais são estimativas para a demonstração e podem ser editados no painel. */
 const SEED_CATS=[{id:'arabes',name:'Perfumes árabes'},{id:'eletronicos',name:'Eletrônicos'}];
-const P=o=>({old:0,stock:3,mode:'pronta',featured:false,variants:[],images:[],inspired:'',longevity:'',rank:0,isNew:false,created:Date.now(),...o});
+const P=o=>({old:0,stock:3,mode:'pronta',featured:false,variants:[],images:[],inspired:'',longevity:'',gender:'',fam:'',rank:0,isNew:false,created:Date.now(),...o});
 const SEED_PRODUCTS=[
   P({id:'supremacy',name:'Afnan Supremacy Collector’s Edition 100ml',cat:'arabes',price:540,stock:4,rank:1,featured:true,img:'img/supremacy.jpg',inspired:'Creed Aventus Absolu',longevity:'+10h',desc:'Frutado adocicado com cítricos, anis elegante e couro bem encaixado. Elegante, versátil e com ótima presença.'}),
   P({id:'vulcan-feu',name:'French Avenue Vulcan Feu 100ml',cat:'arabes',price:390,stock:3,rank:2,featured:true,img:'img/vulcan-feu.jpg',inspired:'Stéphane Humbert Lucas God of Fire',longevity:'+9h',desc:'Frutado tropical e adocicado com manga, gengibre, pimenta e fava tonka. Vibrante, sofisticado e nada enjoativo.'}),
@@ -469,11 +620,16 @@ const SEED_PRODUCTS=[
   P({id:'iphone-duo',name:'iPhone Duo dobrável',cat:'eletronicos',price:14999,stock:0,mode:'encomenda',isNew:true,img:'img/iphone-duo.jpg',variants:['Branco','Preto'],desc:'O primeiro smartphone dobrável da Apple. Câmera profissional, tela Super Retina XDR, desempenho de alto nível e bateria de longa duração.'}),
   P({id:'meta-kylie',name:'Óculos Meta x Kylie Jenner',cat:'eletronicos',price:3499,stock:0,mode:'encomenda',isNew:true,img:'img/meta-kylie.jpg',desc:'O smart glasses mais desejado do momento. Câmera de alta qualidade, áudio imersivo, transmissão ao vivo e design exclusivo Kylie Jenner.'})
 ];
+/* Público e família olfativa (estimativa inicial; editável no painel) */
+const SEED_META={'supremacy':['m','Frutado'],'vulcan-feu':['u','Frutado'],'rayhaan-elixir':['m','Doce'],'art-of-universe':['u','Fresco'],'cdn-intense-man':['m','Amadeirado'],'hawas-verde':['m','Fresco'],'lattafa-fahad':['m','Amadeirado'],'lattafa-eclaire':['f','Doce'],'lattafa-emeer':['u','Amadeirado'],'musamam':['u','Doce'],'afeef':['f','Floral'],'cdn-lancamentos':['m','Amadeirado']};
+SEED_PRODUCTS.forEach(p=>{const m=SEED_META[p.id];if(m){p.gender=m[0];p.fam=m[1];}});
+const GENDERS={m:'Masculino',f:'Feminino',u:'Unissex'};
+const FAMS=['Doce','Fresco','Frutado','Amadeirado','Floral'];
 const SEED_SETTINGS={store:'NF Store',whatsapp:'',instagram:'nf.store_',pix:5,maxInst:3,city:'Rio de Janeiro',pin:'1234'};
 
 /* ---------- Estado ---------- */
 let S=load();
-function load(){try{const r=localStorage.getItem(KEY);if(r){const d=JSON.parse(r);if(d&&d.products)return d;}}catch(e){}return fresh();}
+function load(){try{const r=localStorage.getItem(KEY);if(r){const d=JSON.parse(r);if(d&&d.products){d.products.forEach(p=>{const m=SEED_META[p.id];if(p.gender===undefined)p.gender=m?m[0]:'';if(p.fam===undefined)p.fam=m?m[1]:'';});return d;}}}catch(e){}return fresh();}
 function fresh(){return {cats:structuredClone(SEED_CATS),products:structuredClone(SEED_PRODUCTS),settings:{...SEED_SETTINGS},orders:[],cart:{}};}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));return true;}catch(e){toast('Espaço do navegador cheio. Use fotos menores.');return false;}}
 const PH='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><rect width="400" height="500" fill="#1b1917"/><text x="200" y="262" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#b48c4c">NF</text></svg>');
@@ -512,9 +668,14 @@ const specOf=p=>{const ml=(p.name.match(/(\d+)\s?ml/i)||[])[1];return [ml?ml+' m
 const priceBlock=p=>`<div class="price"><span class="now num">${brl(p.price)}</span>${p.old>p.price?`<span class="old num">${brl(p.old)}</span>`:''}</div><div class="pix num">${brl(pixPrice(p.price))} no Pix</div>`;
 
 /* ---------- Loja ---------- */
-let view={cat:'todos',q:'',sort:'destaque'};
+let view={cat:'todos',q:'',sort:'destaque',g:'todos',fam:'todas',tc:'todos'};
+let page=null;
+const backHash=()=>page||'';
+const TABS=[['','Início'],['arabes','Perfumes árabes'],['tecnologia','Tecnologia']];
+const tabLinks=(cls='')=>TABS.map(([h,n])=>`<a class="${cls}" href="#${h}" ${page===h?'aria-current="page"':''}>${n}</a>`).join('');
 let slideTimer=null;
-function renderStore(){
+function renderStore(pg){
+  page=pg||'';
   const st=S.settings;
   const byId=id=>S.products.find(p=>p.id===id);
   const slides=[
@@ -528,15 +689,17 @@ function renderStore(){
   <div class="notice"><div class="wrap"><span>Entregamos para todo o Brasil</span><span>${st.pix}% de desconto no Pix</span><span>Até ${st.maxInst}x sem juros no cartão</span></div></div>
   <header class="top"><div class="wrap">
     <a class="brand" href="#" aria-label="${esc(st.store)}, início">${logo()}<b>${esc(st.store)}</b></a>
-    <nav class="nav" aria-label="Principal">${S.cats.map(c=>`<a href="#catalogo" data-go="${c.id}">${esc(c.name)}</a>`).join('')}<a href="#ranking">Top árabes</a><a href="#sobre">A loja</a></nav>
+    <nav class="nav" aria-label="Principal">${tabLinks('tab')}</nav>
     <div class="tools">
       <button class="icobtn" id="sBtn" aria-label="Buscar" aria-expanded="false">${ico('search')}</button>
       <button class="icobtn" id="cBtn" aria-label="Abrir sacola">${ico('bag')}<span class="count num" data-n="${cartCount()}">${cartCount()}</span></button>
       <button class="icobtn menubtn" id="mBtn" aria-label="Menu" aria-expanded="false">${ico('menu')}</button>
     </div></div>
     <div class="searchbar" id="sBar" hidden><div class="wrap">${ico('search')}<input id="q" type="search" placeholder="Buscar" value="${esc(view.q)}" autocomplete="off" aria-label="Buscar produtos"><button class="closebtn" id="sClose" aria-label="Fechar busca">${ico('x')}</button></div></div>
-    <div class="sheet" id="mSheet" hidden><div class="wrap">${S.cats.map(c=>`<a href="#catalogo" data-go="${c.id}">${esc(c.name)}</a>`).join('')}<a href="#ranking">Top árabes</a><a href="#sobre">A loja</a></div></div>
+    <div class="sheet" id="mSheet" hidden><div class="wrap">${tabLinks()}<a href="#arabes" data-g="m">Perfumes masculinos</a><a href="#arabes" data-g="f">Perfumes femininos</a></div></div>
+    <div class="tabstrip"><div class="wrap">${tabLinks()}</div></div>
   </header>
+  ${page==='arabes'?arabHTML():page==='tecnologia'?techHTML():`
   <section class="hero lp" aria-label="Apresentação">
     <div class="wrap lp-grid">
       <div class="lp-txt">
@@ -557,6 +720,11 @@ function renderStore(){
     <div>${ico('chat')}<span><b>Atendimento humano</b><small>Pedido fechado no WhatsApp</small></span></div>
   </div></section>
   <main>
+    <section class="wrap worlds" aria-label="Escolha o que procura">
+      ${(()=>{const a=byId('supremacy')||S.products.find(x=>x.cat==='arabes');const t=byId('iphone-18-pro-max')||S.products.find(x=>x.cat==='eletronicos');return `
+      <a class="world ar" href="#arabes"><div class="t"><small>Perfumes árabes</small><h3>Masculinos, femininos e unissex</h3><span class="go">Entrar na perfumaria ${ico('right')}</span></div>${a?`<img src="${img0(a)}" alt="" loading="lazy">`:''}</a>
+      <a class="world tc" href="#tecnologia"><div class="t"><small>Tecnologia</small><h3>iPhone, óculos Meta e mais</h3><span class="go">Ver lançamentos ${ico('right')}</span></div>${t?`<img src="${img0(t)}" alt="" loading="lazy">`:''}</a>`;})()}
+    </section>
     ${ranked.length?`<section class="sec wrap" id="ranking" aria-labelledby="h-rank">
       <div class="sec-head"><div><div class="eyebrow">Ranking da loja</div><h2 id="h-rank">Os árabes mais pedidos</h2><p>Perfumes inspirados nos grandes nichos, com a fixação que nossos clientes relatam.</p></div></div>
       <div class="rankwrap rv-w"><button class="rarrow prev" id="rPrev" type="button" aria-label="Produtos anteriores" disabled>${ico('left')}</button><div class="rank" id="rank">${ranked.map(p=>`<a class="rk" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy"></div><div class="b"><span class="pos num">${p.rank}º</span><span class="nm">${esc(p.name)}</span>${p.inspired?`<span class="meta">Inspirado em ${esc(p.inspired)}</span>`:''}<span class="meta">Fixação ${esc(p.longevity||'alta')}</span>${priceBlock(p)}</div></a>`).join('')}</div><button class="rarrow next" id="rNext" type="button" aria-label="Próximos produtos">${ico('right')}</button></div>
@@ -573,7 +741,7 @@ function renderStore(){
       </div></div></section>`;})()}
     <section class="sec wrap" id="catalogo" aria-labelledby="h-all">
       <div class="sec-head"><div><div class="eyebrow">Tudo que está na loja</div><h2 id="h-all">Catálogo</h2></div></div>
-      <div class="filters"><div style="display:flex;gap:8px;flex-wrap:wrap">${[{id:'todos',name:'Todos'},{id:'novos',name:'Lançamentos'},...S.cats].map(c=>`<button class="chip" data-cat="${c.id}" aria-pressed="${view.cat===c.id}">${esc(c.name)}</button>`).join('')}</div>
+      <div class="filters"><div style="display:flex;gap:8px;flex-wrap:wrap">${[{id:'todos',name:'Todos'},{id:'novos',name:'Lançamentos'},...S.cats,{id:'masc',name:'Masculinos'},{id:'fem',name:'Femininos'}].map(c=>`<button class="chip" data-cat="${c.id}" aria-pressed="${view.cat===c.id}">${esc(c.name)}</button>`).join('')}</div>
         <span class="sp"></span><label class="note" for="sort" style="margin-right:4px">Ordenar</label><select class="sort" id="sort"><option value="destaque">Destaques</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option><option value="nome">Nome</option></select></div>
       <div class="grid" id="grid"></div>
     </section>
@@ -609,18 +777,20 @@ function renderStore(){
     <h2 id="h-final">Chama na <i>melhor</i></h2>
     <p>Não achou o que procurava? Mande uma mensagem. Se é importado e original, a gente consegue para você.</p>
     <div class="ctas"><a class="btn btn-wa" href="${waLink('Olá, NF Store! Vim pelo site e estou procurando um produto.')}" target="_blank" rel="noopener">Falar no WhatsApp</a><a class="btn btn-outline-light" href="#catalogo">Ver catálogo</a></div>
-  </div></section>
+  </div></section>`}
   <footer class="foot"><div class="wrap">
     <div><div style="display:flex;gap:10px;align-items:center">${logo(44)}<b style="margin:0;font-family:var(--f-display);font-size:24px;font-weight:400">${esc(st.store)}</b></div><p style="max-width:34ch">Importados originais. Perfumes árabes, iPhones, eletrônicos e mais, com entrega para todo o Brasil.</p></div>
-    <div class="col"><b>Categorias</b>${S.cats.map(c=>`<a href="#catalogo" data-go="${c.id}">${esc(c.name)}</a>`).join('')}<a href="#ranking">Top árabes</a></div>
+    <div class="col"><b>Categorias</b><a href="#arabes" data-g="m">Perfumes masculinos</a><a href="#arabes" data-g="f">Perfumes femininos</a><a href="#arabes" data-g="todos">Todos os perfumes árabes</a><a href="#tecnologia">Tecnologia</a></div>
     <div class="col"><b>Atendimento</b><a href="${waLink('Olá, NF Store!')}" target="_blank" rel="noopener">WhatsApp${st.whatsapp?` <span class="num">+${esc(st.whatsapp)}</span>`:''}</a><a href="https://www.instagram.com/${esc(st.instagram)}/" target="_blank" rel="noopener">Instagram</a><span>${ico('pin')} ${esc(st.city)}</span></div>
     <div class="col"><b>Pagamento</b><span>Pix com ${st.pix}% off</span><span>Cartão em até ${st.maxInst}x</span><span>Dinheiro na retirada</span></div>
     <div class="legal"><span>© ${new Date().getFullYear()} ${esc(st.store)}</span><a href="#admin">Área da loja</a></div>
   </div></footer>
   <a class="fab" href="${waLink('Olá, NF Store! Vim pelo site.')}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">${waSvg}</a>`;
-  $('#sort').value=view.sort;
-  $('#q').addEventListener('input',e=>{view.q=e.target.value;renderGrid();if(view.q)document.getElementById('catalogo').scrollIntoView({block:'start'});});
-  $('#sort').addEventListener('change',e=>{view.sort=e.target.value;renderGrid();});
+  if($('#sort')){$('#sort').value=view.sort;$('#sort').addEventListener('change',e=>{view.sort=e.target.value;renderGrid();});}
+  $('#q').addEventListener('input',e=>{view.q=e.target.value;renderGrid();renderArabGrid();renderTechGrid();const t=document.getElementById(page==='arabes'?'perfumes':page==='tecnologia'?'tc-list':'catalogo');if(view.q&&t)t.scrollIntoView({block:'start'});});
+  app.querySelectorAll('[data-g]').forEach(a=>a.addEventListener('click',()=>{view.g=a.dataset.g;view.fam='todas';$('#mSheet').hidden=true;if(page==='arabes'){setArab();document.getElementById('perfumes').scrollIntoView({behavior:'smooth'});}}));
+  app.querySelectorAll('.tabstrip a,.sheet a:not([data-g]),.nav a').forEach(a=>a.addEventListener('click',()=>{$('#mSheet').hidden=true;}));
+  bindArab();bindTech();
   $('#cBtn').onclick=()=>openCart();
   $('#sBtn').onclick=()=>{const b=$('#sBar');b.hidden=!b.hidden;$('#sBtn').setAttribute('aria-expanded',!b.hidden);if(!b.hidden)$('#q').focus();};
   $('#sClose').onclick=()=>{$('#sBar').hidden=true;view.q='';$('#q').value='';renderGrid();};
@@ -629,7 +799,7 @@ function renderStore(){
   app.querySelectorAll('a[href="#catalogo"]:not([data-go]),a[href="#ranking"],a[href="#sobre"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();$('#mSheet').hidden=true;const t=document.getElementById(a.getAttribute('href').slice(1));t&&t.scrollIntoView({behavior:'smooth'});}));
   app.querySelectorAll('.chip').forEach(b=>b.addEventListener('click',()=>setCat(b.dataset.cat)));
   const hero=app.querySelector('.hero');clearInterval(slideTimer);
-  if(!reduceMotion()&&matchMedia('(pointer:fine)').matches){const art=hero.querySelector('.lp-art');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();art.style.setProperty('--mx',((e.clientX-r.left)/r.width-.5).toFixed(3));art.style.setProperty('--my',((e.clientY-r.top)/r.height-.5).toFixed(3));});}
+  if(hero&&!reduceMotion()&&matchMedia('(pointer:fine)').matches){const art=hero.querySelector('.lp-art');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();art.style.setProperty('--mx',((e.clientX-r.left)/r.width-.5).toFixed(3));art.style.setProperty('--my',((e.clientY-r.top)/r.height-.5).toFixed(3));});}
   renderGrid();
   const rank=$('#rank');if(rank){
     const step=()=>{const c=rank.querySelector('.rk');return c?(c.getBoundingClientRect().width+16)*(innerWidth<760?1:2):300;};
@@ -643,15 +813,111 @@ function renderStore(){
     rank.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=false;}},true);
     rank.addEventListener('dragstart',e=>e.preventDefault());
   }
-  reveal(app.querySelectorAll('.rankwrap,.feature,.iph>*,.step,.faq details,.about>*,.final .wrap>*'));
-  const top=app.querySelector('.top');const onScroll=()=>top.classList.toggle('over',!$('#overlay')&&scrollY<12&&$('#sBar').hidden&&$('#mSheet').hidden);
+  reveal(app.querySelectorAll('.rankwrap,.feature,.iph>*,.step,.faq details,.about>*,.final .wrap>*,.world'));
+  const top=app.querySelector('.top');const onScroll=()=>top.classList.toggle('over',page!=='tecnologia'&&!$('#overlay')&&scrollY<12&&$('#sBar').hidden&&$('#mSheet').hidden);
   window.onscroll=onScroll;onScroll();
   ['sBtn','mBtn'].forEach(id=>$('#'+id).addEventListener('click',onScroll));
+}
+/* ---------- Aba Perfumes árabes ---------- */
+const fxPct=l=>{const m=String(l||'').match(/(\d+)\s*h\s*(\d+)?/i);if(!m)return 0;return Math.min(100,Math.round((+m[1]+(m[2]?+m[2]/60:0))/10*100));};
+const shortName=p=>p.name.replace(/ EDP.*| \d+\s?ml.*/i,'').replace(/ Collector’s Edition/,'');
+const brandOf=p=>(p.name.match(/^(Afnan|French Avenue|Rayhaan|Lattafa|Armaf|Rasasi|Apple|Meta)\b/)||[])[1]||'';
+function arabHTML(){
+  const top=S.products.filter(p=>p.cat==='arabes'&&p.rank).sort((a,b)=>a.rank-b.rank)[0]||S.products.find(p=>p.cat==='arabes');
+  return `<div class="v-ar">
+  <section class="ar-hero pattern" aria-label="Perfumes árabes"><div class="wrap">
+    <div>
+      <span class="lbl">${esc(S.settings.city)} · perfumaria árabe original</span>
+      <h1>O Oriente em <em>cada borrifada.</em></h1>
+      <p>Perfumes árabes lacrados, com a fixação que fez eles virarem febre no Brasil. Escolha para quem é, o tipo de aroma, e feche o pedido no WhatsApp.</p>
+      <div class="ar-pick"><button type="button" class="solid" data-pick="m">Masculinos</button><button type="button" class="solid" data-pick="f">Femininos</button><button type="button" data-pick="todos">Ver todos</button></div>
+    </div>
+    ${top?`<a class="ar-arch" href="#p-${top.id}"><div class="frame"><img src="${img0(top)}" alt="${esc(top.name)}"></div><div class="seal"><small>Mais pedido da loja</small><b>${esc(shortName(top))}</b><span class="num" style="font-size:13px">${brl(top.price)} · ${brl(pixPrice(top.price))} no Pix</span></div></a>`:''}
+  </div></section>
+  <div class="ar-bar" id="perfumes"><div class="wrap">
+    <div class="ar-seg" role="group" aria-label="Para quem">${[['todos','Todos'],['m','Masculinos'],['f','Femininos']].map(([v,n])=>`<button type="button" data-ag="${v}" aria-pressed="${view.g===v}">${n}</button>`).join('')}</div>
+    <div class="ar-fam" role="group" aria-label="Família olfativa">${['todas',...FAMS].map(f=>`<button type="button" data-af="${f}" aria-pressed="${view.fam===f}">${f==='todas'?'Todos os aromas':f}</button>`).join('')}</div>
+  </div></div>
+  <section class="ar-list pattern"><div class="wrap"><p class="ar-count" id="arcount"></p><div class="ar-grid" id="argrid"></div></div></section>
+  <section class="ar-help"><div class="wrap">
+    <div><span class="lbl">Ficou na dúvida?</span><h2>Conte o que você gosta e a gente indica</h2><p>Diga um perfume que você já usa ou o cheiro que procura. Respondemos no WhatsApp com as opções que combinam.</p></div>
+    <a class="btn" href="${waLink('Olá, NF Store! Quero uma indicação de perfume árabe.')}" target="_blank" rel="noopener">Pedir indicação</a>
+  </div></section>
+  </div>`;
+}
+function setArab(){app.querySelectorAll('[data-ag]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.ag===view.g));app.querySelectorAll('[data-af]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.af===view.fam));renderArabGrid();}
+function bindArab(){
+  app.querySelectorAll('[data-ag]').forEach(b=>b.addEventListener('click',()=>{view.g=b.dataset.ag;setArab();}));
+  app.querySelectorAll('[data-af]').forEach(b=>b.addEventListener('click',()=>{view.fam=b.dataset.af;setArab();}));
+  app.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{view.g=b.dataset.pick;view.fam='todas';setArab();document.getElementById('perfumes').scrollIntoView({behavior:reduceMotion()?'auto':'smooth'});}));
+  renderArabGrid();
+}
+function bindQuick(g){g.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();addToCart(b.dataset.quick,1,'');flyTo(b.closest('.ph').querySelector('img'));toast('Adicionado à sacola');refreshCounts();}));}
+function renderArabGrid(){
+  const g=$('#argrid');if(!g)return;const q=view.q.trim().toLowerCase();
+  const okG=p=>view.g==='todos'||p.gender===view.g||p.gender==='u';
+  const list=S.products.filter(p=>p.cat==='arabes'&&okG(p)&&(view.fam==='todas'||p.fam===view.fam)&&(!q||(p.name+' '+(p.inspired||'')+' '+(p.fam||'')).toLowerCase().includes(q)))
+    .sort((a,b)=>(canBuy(a)?0:1)-(canBuy(b)?0:1)||((a.rank||99)-(b.rank||99))||(b.featured-a.featured));
+  const gl={todos:'perfumes árabes',m:'perfumes masculinos e unissex',f:'perfumes femininos e unissex'}[view.g];
+  $('#arcount').textContent=`${list.length} ${list.length===1?gl.replace('perfumes','perfume').replace('masculinos','masculino').replace('femininos','feminino').replace('árabes','árabe'):gl}${view.fam!=='todas'?' · '+view.fam.toLowerCase():''}`;
+  g.innerHTML=list.length?list.map(p=>{const si=stockInfo(p);const pct=fxPct(p.longevity);
+    const tag=p.mode==='encomenda'?'<span class="tag dk">Sob encomenda</span>':p.stock<=0?'<span class="tag dk">Esgotado</span>':p.rank&&p.rank<=3?`<span class="tag">Top ${p.rank}</span>`:p.isNew?'<span class="tag">Lançamento</span>':p.old>p.price?'<span class="tag">Oferta</span>':p.stock<=2?`<span class="tag">${si.txt}</span>`:'';
+    return `<a class="ar-card" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy">${tag}${canBuy(p)&&!p.variants.length?`<button class="qa" data-quick="${p.id}" type="button">Adicionar à sacola</button>`:''}</div>
+      <span class="br">${esc(brandOf(p)||'Perfume árabe')}${p.gender?`<span>· ${GENDERS[p.gender]}</span>`:''}</span>
+      <h3>${esc(shortName(p).replace(brandOf(p)+' ',''))}</h3>
+      <span class="ins">${p.inspired?'Inspirado em '+esc(p.inspired):esc(p.fam||'')}</span>
+      ${pct?`<span class="fx"><i style="--w:${pct}%"></i>Fixação ${esc(p.longevity)}</span>`:''}
+      <div class="pr">${p.old>p.price?`<s>${brl(p.old)}</s>`:''}<b>${brl(p.price)}</b><span>${brl(pixPrice(p.price))} no Pix</span></div></a>`;}).join('')
+    :`<p class="ar-empty">Nenhum perfume com esse filtro agora. Tente outro aroma ou peça pelo WhatsApp.</p>`;
+  bindQuick(g);reveal(g.querySelectorAll('.ar-card'));
+}
+
+/* ---------- Aba Tecnologia ---------- */
+function techHTML(){
+  const tech=S.products.filter(p=>p.cat!=='arabes');
+  const main=tech.find(p=>p.id==='iphone-18-pro-max')||tech.find(p=>p.featured)||tech[0];
+  const side=tech.filter(p=>p!==main&&p.cat==='eletronicos')[0];
+  const st=S.settings;
+  return `<div class="v-tech">
+  <div class="tc-tick" aria-hidden="true"><div>${[0,1].map(()=>['Lacrado com nota','Procedência garantida',st.pix+'% off no Pix',st.maxInst+'x sem juros','Envio para todo o Brasil','Lançamentos sob encomenda'].map(t=>`<span>${t}</span>`).join('')).join('')}</div></div>
+  <div class="wrap">
+    <section class="tc-hero" aria-label="Destaque">
+      ${main?`<a class="tc-big" href="#p-${main.id}"><div style="min-width:0"><h1>${esc(main.name)}. <em>Lacrado.</em></h1><p>${esc((main.desc||'').split('.')[0])}.</p><div class="pr num">${brl(main.price)}<small>${brl(pixPrice(main.price))} no Pix ou ${st.maxInst}x de ${brl(main.price/st.maxInst)}</small></div><span class="tc-btn" style="margin-top:18px">${main.variants.length?'Escolher a cor':'Ver detalhes'}</span></div>
+        <div class="tc-shot"><span class="tc-stk">${main.isNew?'Lança-<br>mento':'Pronta<br>entrega'}</span><img src="${img0(main)}" alt="${esc(main.name)}"></div></a>`:''}
+      <div class="tc-side">
+        ${side?`<a class="tc-tile dark" href="#p-${side.id}"><h2>${esc(side.name)}</h2><small>${side.mode==='encomenda'?'Sob encomenda':'Pronta entrega'} · <span class="num">${brl(side.price)}</span></small><img src="${img0(side)}" alt=""></a>`:''}
+        <div class="tc-tile hot"><b class="num">${st.pix}% OFF</b><small style="max-width:none;opacity:.92">em tudo pagando no Pix. Ou ${st.maxInst}x sem juros no cartão.</small></div>
+      </div>
+    </section>
+    <section class="tc-sec" id="tc-list" aria-labelledby="h-tc">
+      <div class="tc-head"><h2 id="h-tc">Tecnologia na NF</h2><span style="font-size:14px;color:var(--ink-2)">Apple, Meta e mais</span></div>
+      <div class="tc-chips" role="group" aria-label="Filtrar">${[['todos','Todos'],['pronta','Pronta entrega'],['encomenda','Sob encomenda'],['novos','Lançamentos']].map(([v,n])=>`<button type="button" data-tc="${v}" aria-pressed="${view.tc===v}">${n}</button>`).join('')}</div>
+      <div class="tc-grid" id="tcgrid"></div>
+    </section>
+    <section class="tc-viral">
+      <div><h2>Viu num vídeo? <span>Manda o print.</span></h2><p>Mande a foto ou o nome do aparelho no WhatsApp. Se é original, a gente consegue pra você, mesmo que ainda não esteja no site.</p></div>
+      <a class="tc-btn" href="${waLink('Olá, NF Store! Vi um produto e queria saber se vocês têm.')}" target="_blank" rel="noopener">Mandar no WhatsApp</a>
+    </section>
+  </div></div>`;
+}
+function bindTech(){app.querySelectorAll('[data-tc]').forEach(b=>b.addEventListener('click',()=>{view.tc=b.dataset.tc;app.querySelectorAll('[data-tc]').forEach(x=>x.setAttribute('aria-pressed',x===b));renderTechGrid();}));renderTechGrid();}
+function renderTechGrid(){
+  const g=$('#tcgrid');if(!g)return;const q=view.q.trim().toLowerCase();
+  const list=S.products.filter(p=>p.cat!=='arabes'&&(view.tc==='todos'||(view.tc==='novos'?p.isNew:view.tc==='pronta'?(p.mode!=='encomenda'&&p.stock>0):p.mode==='encomenda'))&&(!q||(p.name+' '+catName(p.cat)).toLowerCase().includes(q)))
+    .sort((a,b)=>(canBuy(a)?0:1)-(canBuy(b)?0:1)||(b.featured-a.featured)||b.price-a.price);
+  g.innerHTML=list.length?list.map(p=>{const si=stockInfo(p);
+    const tg=p.mode==='encomenda'?'<span class="tg hot">Encomenda</span>':p.stock<=0?'<span class="tg hot">Esgotado</span>':p.isNew?'<span class="tg">Lançou</span>':p.stock<=2?`<span class="tg hot">${si.txt}</span>`:'';
+    return `<a class="tc-card" href="#p-${p.id}"><div class="ph"><img src="${img0(p)}" alt="${esc(p.name)}" loading="lazy">${tg}</div>
+      <div class="b"><h3>${esc(p.name)}</h3><span class="st">${p.variants.length?p.variants.length+' cores · ':''}${esc(si.txt)}</span>
+      <div class="pr"><div>${p.old>p.price?`<s style="font-size:12px;color:var(--ink-2)">${brl(p.old)}</s>`:''}<b>${brl(p.price)}</b><small>${brl(pixPrice(p.price))} no Pix</small></div>${canBuy(p)&&!p.variants.length?`<button class="add" data-quick="${p.id}" type="button" aria-label="Adicionar à sacola">+</button>`:`<span class="add" aria-hidden="true">→</span>`}</div></div></a>`;}).join('')
+    :`<p class="tc-empty">Nada com esse filtro agora. Chame no WhatsApp que a gente procura pra você.</p>`;
+  g.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();addToCart(b.dataset.quick,1,'');flyTo(b.closest('.tc-card').querySelector('img'));toast('Adicionado à sacola');refreshCounts();}));
+  reveal(g.querySelectorAll('.tc-card'));
 }
 function setCat(c){view.cat=c;app.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x.dataset.cat===c));renderGrid();}
 function renderGrid(){
   const q=view.q.trim().toLowerCase();
-  let list=S.products.filter(p=>(view.cat==='todos'||(view.cat==='novos'?p.isNew:p.cat===view.cat))&&(!q||(p.name+' '+catName(p.cat)+' '+(p.inspired||'')).toLowerCase().includes(q)));
+  let list=S.products.filter(p=>(view.cat==='todos'||(view.cat==='novos'?p.isNew:view.cat==='masc'?(p.gender==='m'||p.gender==='u'):view.cat==='fem'?(p.gender==='f'||p.gender==='u'):p.cat===view.cat))&&(!q||(p.name+' '+catName(p.cat)+' '+(p.inspired||'')).toLowerCase().includes(q)));
   const av=p=>canBuy(p)?0:1;
   const so={destaque:(a,b)=>av(a)-av(b)||(b.featured-a.featured)||((a.rank||99)-(b.rank||99)),menor:(a,b)=>a.price-b.price,maior:(a,b)=>b.price-a.price,nome:(a,b)=>a.name.localeCompare(b.name)};
   list.sort(so[view.sort]);
@@ -668,7 +934,7 @@ function renderGrid(){
 
 /* Página do produto */
 function openProduct(id){
-  const p=S.products.find(x=>x.id===id);if(!p){location.hash='';return;}
+  const p=S.products.find(x=>x.id===id);if(!p){location.hash=backHash();return;}
   closeOverlay();
   const si=stockInfo(p);let qty=1,cur=0,variant=p.variants[0]||'';const list=imgs(p);
   const rel=S.products.filter(x=>x.id!==p.id&&x.cat===p.cat).slice(0,4);
@@ -695,13 +961,13 @@ function openProduct(id){
   </article>`;
   document.body.appendChild(el);document.body.style.overflow='hidden';
   el.addEventListener('click',e=>{
-    if(e.target===el||e.target.closest('[data-close]')){location.hash='';return;}
+    if(e.target===el||e.target.closest('[data-close]')){location.hash=backHash();return;}
     const t=e.target.closest('[data-i]');if(t){cur=+t.dataset.i;$('#mainImg').src=list[cur];el.querySelectorAll('.thumbs button').forEach((b,i)=>b.setAttribute('aria-current',i===cur));}
     const v=e.target.closest('[data-v]');if(v){variant=v.dataset.v;el.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',b===v));$('#vname').textContent=variant;}
     const q=e.target.closest('[data-q]');if(q){qty=Math.min(maxQ(p),Math.max(1,qty+ +q.dataset.q));$('#qv').textContent=qty;}
     if(e.target.closest('[data-add]')){addToCart(p.id,qty,variant);flyTo($('#mainImg'),el.querySelector('[data-cart]'));toast('Adicionado à sacola');refreshCounts();}
-    if(e.target.closest('[data-buy]')){addToCart(p.id,qty,variant);afterClose=()=>openCart(true);location.hash='';}
-    if(e.target.closest('[data-cart]')){afterClose=()=>openCart();location.hash='';}
+    if(e.target.closest('[data-buy]')){addToCart(p.id,qty,variant);afterClose=()=>openCart(true);location.hash=backHash();}
+    if(e.target.closest('[data-cart]')){afterClose=()=>openCart();location.hash=backHash();}
   });
 }
 function addToCart(id,n,v){const p=S.products.find(x=>x.id===id);const k=id+'::'+(v||'');S.cart[k]=Math.min(maxQ(p),(S.cart[k]||0)+n);save();}
@@ -792,7 +1058,7 @@ function renderAdmin(){
       <div class="tabs" role="tablist">${[['produtos','Produtos'],['novo',editing?'Editar produto':'Novo produto'],['pedidos','Pedidos'],['categorias','Categorias'],['config','Configurações']].map(([k,n])=>`<button role="tab" data-tab="${k}" aria-selected="${atab===k}">${n}</button>`).join('')}</div>
       <section id="apane"></section></main>`;
   app.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{if(b.dataset.tab!=='novo')editing=null;atab=b.dataset.tab;renderAdmin();});
-  $('#logout').onclick=()=>{authed=false;location.hash='';};
+  $('#logout').onclick=()=>{authed=false;location.hash=backHash();};
   ({produtos:paneProducts,novo:paneForm,pedidos:paneOrders,categorias:paneCats,config:paneConfig})[atab]();
 }
 function paneProducts(){
@@ -833,6 +1099,8 @@ function paneForm(){
       <div class="field"><label for="f-var">Cores ou versões, separadas por vírgula</label><input id="f-var" value="${esc(p.variants.join(', '))}" placeholder="Ex.: Preto, Prata"></div></div>
     <div class="row2"><div class="field"><label for="f-insp">Inspirado em (perfumes)</label><input id="f-insp" value="${esc(p.inspired)}" placeholder="Ex.: Creed Aventus"></div>
       <div class="field"><label for="f-long">Fixação</label><input id="f-long" value="${esc(p.longevity)}" placeholder="Ex.: +10h"></div></div>
+    <div class="row2"><div class="field"><label for="f-gen">Para quem (perfumes)</label><select id="f-gen"><option value="">Não se aplica</option>${Object.entries(GENDERS).map(([k,v])=>`<option value="${k}" ${p.gender===k?'selected':''}>${v}</option>`).join('')}</select></div>
+      <div class="field"><label for="f-fam">Tipo de aroma</label><select id="f-fam"><option value="">Não se aplica</option>${FAMS.map(f=>`<option ${p.fam===f?'selected':''}>${f}</option>`).join('')}</select></div></div>
     <div class="field"><label for="f-desc">Descrição</label><textarea id="f-desc" rows="4">${esc(p.desc)}</textarea></div>
     <div style="display:flex;gap:20px;flex-wrap:wrap"><label class="check"><input id="f-feat" type="checkbox" ${p.featured?'checked':''}> Destaque na vitrine</label><label class="check"><input id="f-new" type="checkbox" ${p.isNew?'checked':''}> Lançamento</label></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-dark">${editing?'Salvar alterações':'Cadastrar produto'}</button><button type="button" class="btn btn-ghost" id="cancel">Cancelar</button></div></form>`;
@@ -843,7 +1111,7 @@ function paneForm(){
   const num=v=>{v=String(v).trim();if(!v)return 0;return v.includes(',')?parseFloat(v.replace(/\./g,'').replace(',','.'))||0:parseFloat(v)||0;};
   $('#pf').onsubmit=e=>{e.preventDefault();
     const price=num($('#f-price').value);if(price<=0){toast('Informe um preço válido');$('#f-price').focus();return;}
-    Object.assign(p,{name:$('#f-name').value.trim(),cat:$('#f-cat').value,mode:$('#f-mode').value,price,old:num($('#f-old').value),stock:Math.max(0,parseInt($('#f-stock').value)||0),variants:$('#f-var').value.split(',').map(s=>s.trim()).filter(Boolean),inspired:$('#f-insp').value.trim(),longevity:$('#f-long').value.trim(),featured:$('#f-feat').checked,isNew:$('#f-new').checked,desc:$('#f-desc').value.trim()});
+    Object.assign(p,{name:$('#f-name').value.trim(),cat:$('#f-cat').value,mode:$('#f-mode').value,price,old:num($('#f-old').value),stock:Math.max(0,parseInt($('#f-stock').value)||0),variants:$('#f-var').value.split(',').map(s=>s.trim()).filter(Boolean),inspired:$('#f-insp').value.trim(),longevity:$('#f-long').value.trim(),gender:$('#f-gen').value,fam:$('#f-fam').value,featured:$('#f-feat').checked,isNew:$('#f-new').checked,desc:$('#f-desc').value.trim()});
     const prev=structuredClone(S.products);
     if(editing)S.products=S.products.map(x=>x.id===editing?p:x);
     else{let id=slug(p.name)||'produto';while(S.products.some(x=>x.id===id))id+='-'+Math.floor(Math.random()*90+10);p.id=id;p.created=Date.now();S.products.unshift(p);}
@@ -896,11 +1164,14 @@ let lastWasStore=false,afterClose=null;
 function route(){
   const h=location.hash.slice(1);
   if(h==='admin'){lastWasStore=false;renderAdmin();window.scrollTo(0,0);return;}
-  if(!lastWasStore){renderStore();lastWasStore=true;}
-  if(h.startsWith('p-'))openProduct(h.slice(2));else{closeOverlay();if(afterClose){const f=afterClose;afterClose=null;f();}}
+  if(h.startsWith('p-')){if(!lastWasStore||page===null){renderStore(page||'');lastWasStore=true;}openProduct(h.slice(2));return;}
+  const pg=TABS.some(t=>t[0]===h)?h:'';
+  if(!lastWasStore||pg!==page){closeOverlay();renderStore(pg);lastWasStore=true;window.scrollTo(0,0);}
+  else closeOverlay();
+  if(afterClose){const f=afterClose;afterClose=null;f();}
 }
 window.addEventListener('hashchange',route);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#overlay')){if(location.hash.startsWith('#p-'))location.hash='';else closeOverlay();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#overlay')){if(location.hash.startsWith('#p-'))location.hash=backHash();else closeOverlay();}});
 route();
 })();
 </script>
